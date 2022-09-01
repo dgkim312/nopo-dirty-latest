@@ -1,7 +1,6 @@
 package com.tandem6.nopostore.store.controller;
 
 import com.tandem6.nopostore.store.service.StoreService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/stores")
 public class StoreController {
 
-    @Autowired
-    private StoreService storeService;
+    private final StoreService storeService;
+
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     @GetMapping("/health")
     public String healthCheck() {
@@ -21,7 +23,7 @@ public class StoreController {
     }
 
     @GetMapping
-    public ResponseEntity AllStores() {
+    public ResponseEntity allStores() {
         return new ResponseEntity(storeService.getAllStores(), HttpStatus.OK);
     }
 }

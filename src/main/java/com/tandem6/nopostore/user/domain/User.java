@@ -9,4 +9,7 @@ public class User {
     private String age;
     private String email;
     private String gender;
+    private String role;
+    private String grade;
+    private String password;
 }
