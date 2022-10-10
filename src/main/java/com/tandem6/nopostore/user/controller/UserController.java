@@ -1,5 +1,6 @@
 package com.tandem6.nopostore.user.controller;
 
+import com.tandem6.nopostore.user.controller.dto.UserResponseDTO;
 import com.tandem6.nopostore.user.domain.User;
 import com.tandem6.nopostore.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,9 @@ public class UserController {
                 .gender("M")
                 .build();
 
-        return new ResponseEntity(user, HttpStatus.OK);
+
+
+        return new ResponseEntity(new UserResponseDTO(user), HttpStatus.OK);
     }
 
     @GetMapping
