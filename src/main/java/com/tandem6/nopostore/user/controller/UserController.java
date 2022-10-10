@@ -1,5 +1,6 @@
 package com.tandem6.nopostore.user.controller;
 
+import com.tandem6.nopostore.user.domain.User;
 import com.tandem6.nopostore.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,12 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public ResponseEntity getUserByUserId(@PathVariable String userId) {
-        return new ResponseEntity("jngkim", HttpStatus.OK);
+        User user = User.builder()
+                .name("jngkim")
+                .gender("M")
+                .build();
+
+        return new ResponseEntity(user, HttpStatus.OK);
     }
 
     @GetMapping
