@@ -14,6 +14,6 @@ public interface StarredMapper {
     @Select("SELECT * FROM star_rating limit 1000")
     List<Starred> findAll();
 
-    @Insert("INSERT INTO~~")
+    @Insert("INSERT INTO star_rating (USER_ID, RESTAURANT_ID, STAR_RATING, CREATED_DATE) VALUES (#{userId}, #{storeId}, #{starred}, now())")
     void insertStarred(RequestStarredCreateDTO requestStarredCreateDTO);
 }
