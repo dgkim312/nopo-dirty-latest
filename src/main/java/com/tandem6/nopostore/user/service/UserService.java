@@ -18,7 +18,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public DefaultRes getAllUsers() {
+    public DefaultRes<List<User>> getAllUsers() {
         final List<User> userList = userMapper.findAll();
         if (userList.isEmpty())
             return DefaultRes.res(HttpStatus.NOT_FOUND.value(), ResponseMessage.NOT_FOUND_STORE.label());

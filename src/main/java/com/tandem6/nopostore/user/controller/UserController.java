@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -26,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity getUserByUserId(@PathVariable String userId) {
+    public ResponseEntity<UserResponseDTO> getUserByUserId(@PathVariable String userId) {
         User user = User.builder()
                 .name("jngkim")
                 .gender("M")
@@ -38,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity AllUsers() {
+    public ResponseEntity allUsers() {
         return new ResponseEntity(userService.getAllUsers(), HttpStatus.OK);
     }
 }
