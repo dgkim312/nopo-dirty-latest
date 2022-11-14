@@ -1,8 +1,14 @@
 package com.tandem6.nopostore.store.controller.dto;
 
-import javax.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-public class RequestRegionalStoreDTO {
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+@Data
+@RequiredArgsConstructor
+public class RequestRegionalStoreDTO implements Serializable {
 
     @NotNull
     private String locationArea;
