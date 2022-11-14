@@ -34,10 +34,8 @@ public class StoreService {
         return storeList;
     }
 
-    public DefaultRes findRegionalStoreOrderByRanking(RequestRegionalStoreDTO requestRegionalStoreDTO) {
+    public List<Store> findRegionalStoreOrderByRanking(RequestRegionalStoreDTO requestRegionalStoreDTO) {
         final List<Store> storeList = storeMapper.findRegionalStoreOrderByRanking(requestRegionalStoreDTO);
-        if (storeList.isEmpty())
-            return DefaultRes.res(HttpStatus.NOT_FOUND.value(), ResponseMessage.NOT_FOUND_STORE.label());
-        return DefaultRes.res(HttpStatus.OK.value(), ResponseMessage.READ_STORE.label(), storeList);
+        return storeList;
     }
 }

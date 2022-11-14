@@ -56,7 +56,16 @@ public class StoreController {
     @GetMapping("/store/regional_starred")
     public ResponseEntity findRegionalStoreOrderByRanking(@Valid RequestRegionalStoreDTO requestRegionalStoreDTO) {
         log.info(requestRegionalStoreDTO.toString());
-        return new ResponseEntity(storeService.findRegionalStoreOrderByRanking(requestRegionalStoreDTO), HttpStatus.OK);
+        List<StoreInfoDTO> storeInfoDTOList = storeService.findRegionalStoreOrderByRanking(requestRegionalStoreDTO).stream().map(store ->
+                new StoreInfoDTO(
+                        store.getManagement_no(),
+                        store.getLicense_issue_date(),
+                        store.getStore_name(),
+                        store.getLocation_address(),
+                        store.getBusiness_type(),
+                        store.getRanking())
+                ).collect(Collectors.toList());
+        return new ResponseEntity(DefaultRes.res(HttpStatus.OK.value(), ResponseMessage.READ_STORE.label(), storeInfoDTOList), HttpStatus.OK);
     }
 
 }
