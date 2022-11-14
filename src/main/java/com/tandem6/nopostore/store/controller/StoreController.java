@@ -28,7 +28,7 @@ public class StoreController {
     }
 
     @GetMapping("/store/starred")
-    public ResponseEntity findByStared() {
-        return null;
+    public ResponseEntity findAllStoreOrderByRanking() {
+        return new ResponseEntity(storeService.findAllStoreOrderByRanking(), HttpStatus.OK);
     }
 }
