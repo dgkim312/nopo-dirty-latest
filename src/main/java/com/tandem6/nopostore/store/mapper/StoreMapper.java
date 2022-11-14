@@ -27,7 +27,7 @@ public interface StoreMapper {
             "     (select RESTAURANT_ID,AVG(STAR_RATING) AS Ranking\n" +
             "      from star_rating group by RESTAURANT_ID) a, restarant b\n" +
             "where a.RESTAURANT_ID = b.MANAGEMENT_NO\n" +
-            "    AND b.location_area like '%#{locationArea}%'" +
+            "    AND b.LOCATION_AREA like CONCAT('%',#{locationArea},'%')\n" +
             "    AND b.BUSINESS_STATUS_NAME = '영업/정상'\n" +
             "order by b.LICENSE_ISSUE_DATE asc limit 100;")
     List<Store> findRegionalStoreOrderByRanking(RequestRegionalStoreDTO requestRegionalStoreDTO);
