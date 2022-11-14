@@ -31,4 +31,8 @@ public class StoreController {
     public ResponseEntity findAllStoreOrderByRanking() {
         return new ResponseEntity(storeService.findAllStoreOrderByRanking(), HttpStatus.OK);
     }
+
+    @GetMapping("/store/top_rated")
+    public String findTopRated() {return "Top Rated."; }
+
 }
