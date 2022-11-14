@@ -11,6 +11,6 @@ import java.io.Serializable;
 public class RequestRegionalStoreDTO implements Serializable {
 
     @NotNull
-    private String locationArea;
+    private String location;
 
 }
