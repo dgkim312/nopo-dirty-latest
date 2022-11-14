@@ -31,4 +31,8 @@ public class StoreController {
     public ResponseEntity findByStared() {
         return null;
     }
+
+    @GetMapping("/store/top_rated")
+    public String findTopRated() {return "Top Rated."; }
+
 }
