@@ -50,5 +50,5 @@ public class Store {
     private String traditional_business_no;
     private String traditional_business_food;
     private String homepage;
-    private String ranking;
+    private Float ranking;
 }
