@@ -32,3 +32,5 @@ public interface StoreMapper {
             "order by b.LICENSE_ISSUE_DATE asc limit 100;")
     List<Store> findRegionalStoreOrderByRanking(RequestRegionalStoreDTO requestRegionalStoreDTO);
 }
+
+

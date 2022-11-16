@@ -55,7 +55,6 @@ public class StoreController {
 
     @GetMapping("/store/regional_starred")
     public ResponseEntity findRegionalStoreOrderByRanking(@Valid RequestRegionalStoreDTO requestRegionalStoreDTO) {
-        log.info(requestRegionalStoreDTO.toString());
         List<StoreInfoDTO> storeInfoDTOList = storeService.findRegionalStoreOrderByRanking(requestRegionalStoreDTO).stream().map(store ->
                 new StoreInfoDTO(
                         store.getManagement_no(),
