@@ -13,23 +13,27 @@ public interface StoreMapper {
     @Select("SELECT * FROM restarant limit 1000")
     List<Store> findAll();
 
-    @Select("select b.MANAGEMENT_NO, b.LICENSE_ISSUE_DATE, b.STORE_NAME, b.LOCATION_ADDRESS, b.BUSINESS_TYPE, a.Ranking\n" +
-            "from\n" +
-            "     (select RESTAURANT_ID,AVG(STAR_RATING) AS Ranking\n" +
-            "      from star_rating group by RESTAURANT_ID order by Ranking desc) a, restarant b\n" +
-            "where a.RESTAURANT_ID = b.MANAGEMENT_NO\n" +
-            "    AND b.BUSINESS_STATUS_NAME = '영업/정상'\n" +
-            "order by b.LICENSE_ISSUE_DATE asc limit 100;")
+    @Select("""
+            select b.MANAGEMENT_NO, b.LICENSE_ISSUE_DATE, b.STORE_NAME, b.LOCATION_ADDRESS, b.BUSINESS_TYPE, a.Ranking
+            from
+                 (select RESTAURANT_ID,AVG(STAR_RATING) AS Ranking
+                  from star_rating group by RESTAURANT_ID order by Ranking desc) a, restarant
+            where a.RESTAURANT_ID = b.MANAGEMENT_NO
+                AND b.BUSINESS_STATUS_NAME = '영업/정상'
+            order by b.LICENSE_ISSUE_DATE asc limit 100;
+            """)
     List<Store> findAllStoreOrderByRanking();
 
-    @Select("select b.MANAGEMENT_NO, b.LICENSE_ISSUE_DATE, b.STORE_NAME, b.LOCATION_ADDRESS, b.BUSINESS_TYPE, a.Ranking\n" +
-            "from\n" +
-            "     (select RESTAURANT_ID,AVG(STAR_RATING) AS Ranking\n" +
-            "      from star_rating group by RESTAURANT_ID order by Ranking desc) a, restarant b\n" +
-            "where a.RESTAURANT_ID = b.MANAGEMENT_NO\n" +
-            "    AND b.LOCATION_ADDRESS like CONCAT('%',#{location},'%')\n" +
-            "    AND b.BUSINESS_STATUS_NAME = '영업/정상'\n" +
-            "order by b.LICENSE_ISSUE_DATE asc limit 100;")
+    @Select("""
+            select b.MANAGEMENT_NO, b.LICENSE_ISSUE_DATE, b.STORE_NAME, b.LOCATION_ADDRESS, b.BUSINESS_TYPE, a.Ranking
+            from
+                 (select RESTAURANT_ID,AVG(STAR_RATING) AS Ranking
+                  from star_rating group by RESTAURANT_ID order by Ranking desc) a, restarant b
+            where a.RESTAURANT_ID = b.MANAGEMENT_NO
+                AND b.LOCATION_ADDRESS like CONCAT('%',#{location},'%')
+                AND b.BUSINESS_STATUS_NAME = '영업/정상'
+            order by b.LICENSE_ISSUE_DATE asc limit 100;
+            """)
     List<Store> findRegionalStoreOrderByRanking(RequestRegionalStoreDTO requestRegionalStoreDTO);
 }
 
