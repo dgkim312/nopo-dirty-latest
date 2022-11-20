@@ -17,7 +17,6 @@ import java.util.List;
 public class StarredService {
 
     private final StarredMapper starredMapper;
-    private final EventService eventService;
 
     public DefaultRes getAllStarreds() {
         final List<Starred> starredList = starredMapper.findAll();
@@ -30,6 +29,5 @@ public class StarredService {
     public void createStarredToStore(RequestStarredCreateDTO requestStarredCreateDTO) {
         // requestStarredCreateDTO 비즈니스 적인 유효성을 확인해야 하는 것은 요기서 처리
         starredMapper.insertStarred(requestStarredCreateDTO);
-        eventService.publishEvent( new CreateStarredEvent("0.1", requestStarredCreateDTO));
     }
 }
