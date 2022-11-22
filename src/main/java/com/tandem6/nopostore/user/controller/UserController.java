@@ -1,5 +1,6 @@
 package com.tandem6.nopostore.user.controller;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import com.tandem6.nopostore.user.controller.dto.UserResponseDTO;
 import com.tandem6.nopostore.user.domain.User;
 import com.tandem6.nopostore.user.service.UserService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@XRayEnabled
 @RestController
 @RequestMapping("/users")
 public class UserController {
