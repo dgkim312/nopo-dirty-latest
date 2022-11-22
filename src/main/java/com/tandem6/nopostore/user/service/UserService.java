@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@XRayEnabled
 @Slf4j
 @Service
 public class UserService {
