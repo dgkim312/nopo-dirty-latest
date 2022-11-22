@@ -1,11 +1,13 @@
 package com.tandem6.nopostore.user.mapper;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import com.tandem6.nopostore.user.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+@XRayEnabled
 @Mapper
 public interface UserMapper {
 

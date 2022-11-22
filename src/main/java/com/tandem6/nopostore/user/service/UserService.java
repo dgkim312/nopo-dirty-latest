@@ -1,5 +1,6 @@
 package com.tandem6.nopostore.user.service;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import com.tandem6.nopostore.user.domain.User;
 import com.tandem6.nopostore.user.mapper.UserMapper;
 import com.tandem6.nopostore.util.DefaultRes;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@XRayEnabled
 @Slf4j
 @Service
 public class UserService {

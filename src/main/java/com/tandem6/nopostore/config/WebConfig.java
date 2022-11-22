@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 import javax.servlet.Filter;
 import java.net.URL;
 
-@Profile("!local")
+@Profile("!dev")
 @Configuration
 public class WebConfig {
     static {
