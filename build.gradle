@@ -27,8 +27,8 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
     implementation platform('software.amazon.awssdk:bom:2.18.16')
     implementation 'com.amazonaws:aws-xray-recorder-sdk-spring:2.13.0'
-    implementation 'com.amazonaws:aws-xray-recorder-sdk-sql-mysql'
-    implementation 'com.amazonaws:aws-xray-recorder-sdk-sql'
+    implementation 'com.amazonaws:aws-xray-recorder-sdk-sql-mysql:2.13.0'
+    implementation 'com.amazonaws:aws-xray-recorder-sdk-sql:2.13.0'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'software.amazon.awssdk:sqs'
     compileOnly 'org.projectlombok:lombok'
