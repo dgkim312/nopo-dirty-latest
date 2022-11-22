@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+@XRayEnabled
 @Mapper
 public interface UserMapper {
 
