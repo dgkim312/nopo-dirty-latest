@@ -18,30 +18,10 @@ import java.net.URL;
 @Profile("dev")
 @Configuration
 public class WebConfig {
-    private static final String SAMPLING_RULE_JSON = "classpath:/sampling-rules.json";
-
-    static {
-
-        URL ruleFile = null;
-        try {
-            ruleFile = ResourceUtils.getURL(SAMPLING_RULE_JSON);
-        } catch (FileNotFoundException e) {
-            log.error("sampling rule cannot load for aws xray - {}", e.getMessage());
-        }
-        log.debug("sampling rule load from {} for aws xray", ruleFile.getPath());
-
-        AWSXRayRecorderBuilder builder = AWSXRayRecorderBuilder.standard()
-                .withDefaultPlugins()
-                .withSamplingStrategy(new CentralizedSamplingStrategy(ruleFile));
-
-        AWSXRay.setGlobalRecorder(builder.build());
-        log.debug("aws xray recorder was setted globally.");
-    }
 
     @Bean
     public Filter TracingFilter() {
-        log.debug("The segment name for aws xray tracking has been set to {}.", "nopo");
-        return new AWSXRayServletFilter("nopo");
+        return new AWSXRayServletFilter("Scorekeep");
     }
 }
 
