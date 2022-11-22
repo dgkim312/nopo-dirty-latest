@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Profile("!dev")
+@Profile("dev")
 @Aspect
 @Component
 public class XRayInspector extends BaseAbstractXRayInterceptor {
