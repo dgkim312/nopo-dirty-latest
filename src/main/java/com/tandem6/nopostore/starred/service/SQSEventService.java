@@ -1,5 +1,7 @@
 package com.tandem6.nopostore.starred.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -18,13 +20,15 @@ public class SQSEventService implements EventService{
     private SqsClient sqsClient;
 
     @Override
-    public void publishEvent(Event event) {
+    public void publishEvent(Event event) throws JsonProcessingException {
+
+        ObjectMapper mapper = new ObjectMapper();
 
         GetQueueUrlResponse queue = sqsClient.getQueueUrl(GetQueueUrlRequest.builder().queueName("NopoServerlessStack-StarQueue73294539-iKMBf8gNGNt2").build());
 
         SendMessageResponse sendMessageResponse = sqsClient.sendMessage(SendMessageRequest.builder()
                 .queueUrl(queue.queueUrl())
-                .messageBody(event.toString())
+                .messageBody(mapper.writeValueAsString(event))
                 .delaySeconds(1)
                 .build());
 
