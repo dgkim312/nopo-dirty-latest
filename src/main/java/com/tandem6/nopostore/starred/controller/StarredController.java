@@ -35,7 +35,7 @@ public class StarredController {
     public ResponseEntity createStarredToStore(@RequestBody @Valid RequestStarredCreateDTO requestStarredCreateDTO){
         log.info(requestStarredCreateDTO.toString());
         starredService.createStarredToStore(requestStarredCreateDTO);
-        return null;
+        return new ResponseEntity("OK", HttpStatus.OK);
     }
 
 }
