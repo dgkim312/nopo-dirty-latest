@@ -1,5 +1,6 @@
 package com.tandem6.nopostore.starred.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.tandem6.nopostore.starred.controller.dto.RequestStarredCreateDTO;
 import com.tandem6.nopostore.starred.service.StarredService;
 import lombok.RequiredArgsConstructor;
@@ -32,10 +33,10 @@ public class StarredController {
 
     //Controller은 번역기의 역할이고, ACL
     @PostMapping
-    public ResponseEntity createStarredToStore(@RequestBody @Valid RequestStarredCreateDTO requestStarredCreateDTO){
+    public ResponseEntity createStarredToStore(@RequestBody @Valid RequestStarredCreateDTO requestStarredCreateDTO) throws JsonProcessingException {
         log.info(requestStarredCreateDTO.toString());
         starredService.createStarredToStore(requestStarredCreateDTO);
-        return null;
+        return new ResponseEntity("OK", HttpStatus.OK);
     }
 
 }

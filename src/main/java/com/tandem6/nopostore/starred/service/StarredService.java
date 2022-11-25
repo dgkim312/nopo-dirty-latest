@@ -1,5 +1,7 @@
 package com.tandem6.nopostore.starred.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tandem6.nopostore.starred.controller.dto.RequestStarredCreateDTO;
 import com.tandem6.nopostore.starred.domain.Starred;
 import com.tandem6.nopostore.starred.mapper.StarredMapper;
@@ -17,6 +19,8 @@ import java.util.List;
 public class StarredService {
 
     private final StarredMapper starredMapper;
+    private final EventService eventService;
+
 
     public DefaultRes getAllStarreds() {
         final List<Starred> starredList = starredMapper.findAll();
@@ -26,8 +30,9 @@ public class StarredService {
     }
 
     @Transactional
-    public void createStarredToStore(RequestStarredCreateDTO requestStarredCreateDTO) {
-        // requestStarredCreateDTO 비즈니스 적인 유효성을 확인해야 하는 것은 요기서 처리
+    public void createStarredToStore(RequestStarredCreateDTO requestStarredCreateDTO) throws JsonProcessingException {
         starredMapper.insertStarred(requestStarredCreateDTO);
+        eventService.publishEvent( new CreateStarredEvent("0.1", requestStarredCreateDTO));
+
     }
 }
