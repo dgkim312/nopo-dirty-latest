@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.amazonaws:aws-xray-recorder-sdk-sql:2.13.0'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'software.amazon.awssdk:sqs'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
